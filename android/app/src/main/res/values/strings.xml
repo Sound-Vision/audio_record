@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">aos_audio_record</string>
+    <string name="start_recording">开始录音</string>
+    <string name="stop_recording">结束录音</string>
 </resources>
