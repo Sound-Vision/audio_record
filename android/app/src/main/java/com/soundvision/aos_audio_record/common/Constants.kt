@@ -18,5 +18,6 @@ enum class ErrorCode {
     SV_INIT_ERROR,
     SV_STATE_ERROR,
     SV_START_ERROR,
-    SV_STOP_ERROR
+    SV_STOP_ERROR,
+    SV_RELEASE_ERROR
 }

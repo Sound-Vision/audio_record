@@ -71,7 +71,7 @@ class SVAudioRecorder private constructor() : IAudioRecorder {
         val mHwBufferSize = ensureHwBufferSize()
         val channelConfig = configurationChannelConfig(mChannel)
         runCatching {
-            audioRecord = AudioRecord(AudioSource.VOICE_COMMUNICATION, sampleRate, channelConfig, AudioFormat.ENCODING_PCM_16BIT, mHwBufferSize)
+            audioRecord = AudioRecord(AudioSource.MIC, sampleRate, channelConfig, AudioFormat.ENCODING_PCM_16BIT, mHwBufferSize)
         }.let {
             if(it.isFailure) {
                 it.exceptionOrNull()?.printStackTrace()
@@ -97,6 +97,7 @@ class SVAudioRecorder private constructor() : IAudioRecorder {
             err.printStackTrace()
             result = ErrorCode.SV_START_ERROR
         }
+
         captureThread = AudioCaptureThread()
         captureThread?.start() ?: { result = ErrorCode.SV_START_ERROR }
         return result.ordinal

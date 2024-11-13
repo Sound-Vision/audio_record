@@ -11,12 +11,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.soundvision.aos_audio_record.common.*
-import com.soundvision.aos_audio_record.java_audio_record.SVAudioRecorder
+import com.soundvision.aos_audio_record.java_audio_record.SVMediaRecorder
 
 class MainActivity : AppCompatActivity() {
 
     private val tag: String = "MainActivity"
-    private lateinit var recorder: SVAudioRecorder
+    private lateinit var recorder: IAudioRecorder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         context = application
-        recorder = SVAudioRecorder.instance
+        recorder = SVMediaRecorder.instance
         if(initRecording().not()) {
             Log.w(this.tag, "init recording failed, need request permission.")
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), SV_REQUEST_AUDIO_RECORD_PERMISSION_CODE)
