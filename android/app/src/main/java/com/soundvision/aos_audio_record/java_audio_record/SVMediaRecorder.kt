@@ -40,6 +40,18 @@ class SVMediaRecorder private constructor() : IAudioRecorder {
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
             setOutputFile(fileName)
         }
+        recorder?.setOnErrorListener { mr, what, extra ->
+            when (what) {
+                MediaRecorder.MEDIA_ERROR_SERVER_DIED -> {
+                    Log.i(this.tag, "远程服务错误，MediaRecorder无法继续工作，需要重新初始化, extra:$extra")
+                    mr.reset()
+                }
+                MediaRecorder.MEDIA_RECORDER_ERROR_UNKNOWN -> {
+                    Log.i(this.tag, "MediaRecorder 内部出现未知错误, extra:$extra")
+                    mr.reset()
+                }
+            }
+        }
         return ErrorCode.SV_NO_ERROR.ordinal
     }
 
