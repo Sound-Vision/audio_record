@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2024 声知视界 All Rights Reserved.
+ *
+ * Use of this source code is governed by a BSD-style license
+ * that can be found in the LICENSE file in the root of the source
+ * tree.
+ */
 package com.soundvision.aos_audio_record
 
 import android.Manifest
@@ -11,7 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.soundvision.aos_audio_record.common.*
-import com.soundvision.aos_audio_record.java_audio_record.SVMediaRecorder
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         context = application
-        recorder = SVMediaRecorder.instance
+        recorder = SVNativeRecorder.instance
         if(initRecording().not()) {
             Log.w(this.tag, "init recording failed, need request permission.")
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), SV_REQUEST_AUDIO_RECORD_PERMISSION_CODE)
