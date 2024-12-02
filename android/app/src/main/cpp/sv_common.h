@@ -20,12 +20,14 @@ enum SV_RESULT: int16_t {
     SV_CRATE_ERROR,
     SV_INIT_ERROR,
     SV_START_RECORDING_ERROR,
-    SV_STOP_ERROR
+    SV_STOP_ERROR,
+    SV_STATE_ERROR
 };
 
 enum SV_RECORD_TYPE : int32_t {
     UNDEFINED = -1,
-    OPEN_SL = 0
+    OPEN_SL = 0,
+    AAUDIO = 1,
 };
 
 template <typename T, size_t N>

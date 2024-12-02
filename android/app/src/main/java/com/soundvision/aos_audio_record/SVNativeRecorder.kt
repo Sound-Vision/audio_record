@@ -40,7 +40,7 @@ class SVNativeRecorder private constructor() : IAudioRecorder{
         assert(file.createNewFile()) { Log.w(tag, "create .pcm file failed.") }
         Log.i(this.tag, "fileName: ${file.absolutePath}")
 
-        set_record_type(0, file.absolutePath)
+        set_record_type(1, file.absolutePath)
         return int_recording(sampleRate, channel)
     }
 
