@@ -28,6 +28,7 @@ enum SV_RECORD_TYPE : int32_t {
     UNDEFINED = -1,
     OPEN_SL = 0,
     AAUDIO = 1,
+    OBOE = 2
 };
 
 template <typename T, size_t N>

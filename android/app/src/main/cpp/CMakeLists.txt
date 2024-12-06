@@ -26,7 +26,9 @@ project("audio_record")
 # used in the AndroidManifest.xml file.
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        native-lib.cpp sv_opensl_recorder.cpp sv_aaudio_recorder.cpp)
+        native-lib.cpp sv_opensl_recorder.cpp sv_aaudio_recorder.cpp sv_oboe_recorder.cpp)
+
+find_package (oboe REQUIRED CONFIG)
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
@@ -36,4 +38,5 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         android
         log
         OpenSLES
-        aaudio)
+        aaudio
+        oboe::oboe)

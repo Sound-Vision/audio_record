@@ -45,7 +45,6 @@ inline const char* GetSLErrorString(size_t code) {
 class SVOpenSLRecorder : public ISVNativeRecorder {
 
   public:
-    using Ptr = std::shared_ptr<SVOpenSLRecorder>;
     explicit SVOpenSLRecorder(std::string file_path);
     ~SVOpenSLRecorder();
     int InitRecording(int sample_rate, int channel) override;

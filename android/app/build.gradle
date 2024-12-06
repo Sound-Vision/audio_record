@@ -18,6 +18,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags '-std=c++14'
+                arguments "-DANDROID_STL=c++_shared"
             }
         }
     }
@@ -41,10 +42,12 @@ android {
             version '3.22.1'
         }
     }
+    buildFeatures {
+        prefab true
+    }
 }
 
 dependencies {
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -53,4 +56,5 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+    implementation 'com.google.oboe:oboe:1.9.0'
 }

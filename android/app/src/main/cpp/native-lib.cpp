@@ -10,6 +10,7 @@
 #include <string>
 #include "sv_opensl_recorder.h"
 #include "sv_aaudio_recorder.h"
+#include "sv_oboe_recorder.h"
 
 SV_RECORD_TYPE g_record_type_ = UNDEFINED;
 ISVNativeRecorder::Ptr g_recorder = nullptr;
@@ -34,6 +35,9 @@ void nativeSetRecordType(JNIEnv* env, jobject obj, jint type, jstring file_path)
   } else if (type == SV_RECORD_TYPE::AAUDIO) {
     g_recorder = std::make_shared<sv_recorder::SVAAudioRecorder>(std::move(path));
     g_record_type_ = SV_RECORD_TYPE::AAUDIO;
+  } else if (type == SV_RECORD_TYPE::OBOE) {
+    g_recorder = std::make_shared<sv_recorder::SVOboeRecorder>(std::move(path));
+    g_record_type_ = SV_RECORD_TYPE::OBOE;
   }
   env->ReleaseStringUTFChars(file_path, c_path);
 }
